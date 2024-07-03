@@ -1,18 +1,22 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-  <h3>Chai Stores</h3>
-  <form method="post">
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md mt-8">
+    <h3 class="text-3xl font-semibold mb-4">Chai Stores</h3>
+    <form method="post" class="mb-6">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Search Stores</button>
+        <button type="submit" class="mt-4 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            Search Stores
+        </button>
     </form>
-  {% if stores %}
-        <h2>Stores with Selected Chai Variety</h2>
-        <ul>
+    {% if stores %}
+        <h2 class="text-2xl font-bold mb-4">Stores with Selected Chai Variety</h2>
+        <ul class="list-disc list-inside space-y-2">
             {% for store in stores %}
-                <li>{{ store.name }} - {{ store.location }}</li>
+                <li class="text-lg">{{ store.name }} - {{ store.location }}</li>
             {% endfor %}
         </ul>
     {% endif %}
+</div>
 {% endblock %}

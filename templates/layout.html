@@ -1,5 +1,5 @@
 {% load static tailwind_tags %}
-{% load static %}
+{% comment %} {% load static %} {% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +10,20 @@
         Default value
         {% endblock %}
     </title>
-    <link rel="stylesheet" href="{% static
-    'css/style.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static '/css/style.css' %}"> {% endcomment %}
     {% tailwind_css %}
 </head>
-
-<body>
-   <nav> <h4> This is our Navbar </h4></navbar>
-    {% block content %}{% endblock %}
+<body class="bg-gray-100 text-gray-900">
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold">BrandName</div>
+            <div>
+                <h4 class="text-lg font-semibold">This is our Navbar</h4>
+            </div>
+        </div>
+    </nav>
+    <main class="container mx-auto p-4">
+        {% block content %}{% endblock %}
+    </main>
 </body>
 </html>
